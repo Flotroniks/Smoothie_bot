@@ -6,6 +6,7 @@
 # files and token
 *.token
 *.txt
+*.old
 # User-specific files
 *.rsuser
 *.suo
