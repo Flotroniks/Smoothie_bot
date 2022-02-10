@@ -1,4 +1,4 @@
-import requests,string,datetime,Utils
+import requests,string,datetime,Utils,json
 
 def rootme():
     d = datetime.datetime.now()
@@ -58,9 +58,23 @@ def rootme():
     return tmp_str
 
 
+def cryptohack():
+        f=open("Usernames_cryptohack.txt", "r")
+        Users=f.readlines()
+        Users=[x.strip() for x in Users]
+        tab=[]     
+        for user in Users:
+            r=requests.get('https://cryptohack.org/api/user/'+user+'/')
+            reponse=r.json() 
+            if "username" in reponse:
+                
+                print(reponse["username"])
+                print(reponse["score"])
+                tab.append([reponse["username"],int(reponse["score"])])
+        
+        print(tab)
+            
 
 
-
-
-
+cryptohack()
 
