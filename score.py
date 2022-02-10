@@ -35,7 +35,7 @@ def rootme():
                         tab.append([user,int(score)])
                         
                         break
-        tab=Utils.tri_rapide(tab)  #tri du tableau
+            
         f=open("score.tmp", "w")
         f.write(str(tab))
         f.close()
@@ -68,13 +68,19 @@ def cryptohack():
             reponse=r.json() 
             if "username" in reponse:
                 
-                print(reponse["username"])
-                print(reponse["score"])
-                tab.append([reponse["username"],int(reponse["score"])])
+             
+                tab.append([reponse["username"],int(reponse["score"]),reponse["rank"]])
         
-        print(tab)
-            
-
-
+        
+        tab=Utils.tri_rapide(tab)  #tri du tableau
+        tmp_str=""
+        rang_max=len(str(tab[len(tab)-1][2]))
+        max_username_length=Utils.max_username_length(tab)
+        score_max=len(str(tab[0][2]))
+        #print(rang_max)
+        for i in range(0,len(tab)):        
+            tmp_str+="Rangs {0} : {1} ({2}pts) \n".format(str(tab[i][2]).rjust(rang_max),tab[i][0].ljust(max_username_length),tab[i][1])#affichage du tableau
+        print(tmp_str)
+        return tmp_str
 cryptohack()
 
