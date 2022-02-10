@@ -80,7 +80,7 @@ def cryptohack():
         #print(rang_max)
         for i in range(0,len(tab)):        
             tmp_str+="Rangs {0} : {1} ({2}pts) \n".format(str(tab[i][2]).rjust(rang_max),tab[i][0].ljust(max_username_length),tab[i][1])#affichage du tableau
-        print(tmp_str)
+        
         return tmp_str
 cryptohack()
 

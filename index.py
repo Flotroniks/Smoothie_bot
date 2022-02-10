@@ -11,7 +11,7 @@ client = commands.Bot(command_prefix='!')
 
 @client.command(name="cryptohack",help="Show cryptohack score")
 async def cryptohack(ctx):
-        await ctx.send()
+        await ctx.send(score.cryptohack())
 
 @client.command(name="rootme",help="Show root me score")
 async def rootme(ctx):
