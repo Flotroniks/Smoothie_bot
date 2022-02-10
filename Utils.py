@@ -24,17 +24,11 @@ def max_username_length(tableau):
     return max 
 
 
-def Usernames_size(tableau):
-    max = len(str(tableau[0][0]))
-    
-    for i in range(1,len(tableau),1):
-        if (max<len(str(tableau[i][0]))):
-            max=len(str(tableau[i][0]))
+
             
 
 
-        
-    return max
+   
         
 
 
