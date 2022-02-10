@@ -24,19 +24,17 @@ def max_username_length(tableau):
     return max 
 
 
-def normalize_username(tableau,max):
+def Usernames_size(tableau):
+    max = len(str(tableau[0][0]))
+    
+    for i in range(1,len(tableau),1):
+        if (max<len(str(tableau[i][0]))):
+            max=len(str(tableau[i][0]))
+            
 
-    for i in range(len(tableau)):
-        user = tableau[i][0]
-        score = tableau[i][1]
+
         
-        nb_space = max - len(user)
-        if (score<1000):
-            nb_space+=1
-        user += " "*nb_space
-        tableau[i][0]=user
-        
-    return tableau
+    return max
         
 
 

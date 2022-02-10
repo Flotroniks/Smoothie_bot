@@ -1,4 +1,4 @@
-import requests,string,datetime,Utils
+import requests,string,datetime,Utils,json
 
 def rootme():
     d = datetime.datetime.now()
@@ -35,7 +35,7 @@ def rootme():
                         tab.append([user,int(score)])
                         
                         break
-        tab=Utils.tri_rapide(tab)  #tri du tableau
+            
         f=open("score.tmp", "w")
         f.write(str(tab))
         f.close()
@@ -58,9 +58,29 @@ def rootme():
     return tmp_str
 
 
-
-
-
-
-
+def cryptohack():
+        f=open("Usernames_cryptohack.txt", "r")
+        Users=f.readlines()
+        Users=[x.strip() for x in Users]
+        tab=[]     
+        for user in Users:
+            r=requests.get('https://cryptohack.org/api/user/'+user+'/')
+            reponse=r.json() 
+            if "username" in reponse:
+                
+             
+                tab.append([reponse["username"],int(reponse["score"]),reponse["rank"]])
+        
+        
+        tab=Utils.tri_rapide(tab)  #tri du tableau
+        tmp_str=""
+        rang_max=len(str(tab[len(tab)-1][2]))
+        max_username_length=Utils.max_username_length(tab)
+        score_max=len(str(tab[0][2]))
+        #print(rang_max)
+        for i in range(0,len(tab)):        
+            tmp_str+="Rangs {0} : {1} ({2}pts) \n".format(str(tab[i][2]).rjust(rang_max),tab[i][0].ljust(max_username_length),tab[i][1])#affichage du tableau
+        
+        return tmp_str
+cryptohack()
 
